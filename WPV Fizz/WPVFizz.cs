@@ -41,10 +41,12 @@ namespace WPVFizz
         private static void OnDraw(EventArgs args)
         {
             var drawQ = Menu.Item("drawQ").GetValue<bool>();
+            var drawW = Menu.Item("drawW").GetValue<bool>();
             var drawE = Menu.Item("drawE").GetValue<bool>();
             var drawR = Menu.Item("drawR").GetValue<bool>();
 
             var qColor = Menu.Item("qColor").GetValue<Circle>().Color;
+            var wColor = Menu.Item("wColor").GetValue<Circle>().Color;
             var eColor = Menu.Item("eColor").GetValue<Circle>().Color;
             var rColor = Menu.Item("rColor").GetValue<Circle>().Color;
 
@@ -52,6 +54,9 @@ namespace WPVFizz
 
             if (drawQ)
                 Utility.DrawCircle(position, Q.Range, qColor);
+
+            if (drawW)
+                Utility.DrawCircle(position, W.Range, wColor);
 
             if (drawE)
                 Utility.DrawCircle(position, E.Range, eColor);
@@ -101,7 +106,7 @@ namespace WPVFizz
             farmMenu.AddItem(new MenuItem("useQFarm", "Q").SetValue(new StringList(new[] { "Freeze", "WaveClear", "Both", "None" }, 1)));
             farmMenu.AddItem(new MenuItem("useWFarm", "W").SetValue(new StringList(new[] { "Freeze", "WaveClear", "Both", "None" }, 3)));
             farmMenu.AddItem(new MenuItem("UseEWC", "Use E WC").SetValue(true));
-            farmMenu.AddItem(new MenuItem("JungleActive", "Jungle Clear!").SetValue(new KeyBind("C".ToCharArray()[0], KeyBindType.Press)));
+            farmMenu.AddItem(new MenuItem("JungleActive", "Jungle Clear!").SetValue(new KeyBind("X".ToCharArray()[0], KeyBindType.Press)));
             farmMenu.AddItem(new MenuItem("UseQJung", "Use Q").SetValue(false));
             farmMenu.AddItem(new MenuItem("UseWJung", "Use W").SetValue(true));
             farmMenu.AddItem(new MenuItem("UseEJung", "Use E").SetValue(true));
